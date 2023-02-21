@@ -1,9 +1,9 @@
 
-clear all,  % limpa todas as variaveis no ambinete de trabalho
+clear all,  % clean all the variables in the working space
 
-clear A,    % limpa  avarável "A"
+clear A,    % cleans the variable  "A"
 
-whos        % permite identificar as variaveis que estão a ser usadas.
+whos        % it allows t sse the variablesin use inthe working space
 
 
 
@@ -13,7 +13,8 @@ whos        % permite identificar as variaveis que estão a ser usadas.
 %
 % -------------------------------------------------
 
-% -------------------------- example -----------------------------------
+% -----example - acessing the contents of an array -----------------
+
 A = [1 4 1 6 9 56 ];
 
 A(0)
@@ -25,23 +26,34 @@ A(length(A))
 
 A(C)
 
-% -------------------------- example -----------------------------------
+% ------example two different way to write the same array ------------
 A1 = [1 2 3; 4 5 6]
 
 A2 = [ 1 2 3
        4 5 6 ]
 
-% -------------------------- example -----------------------------------
+% ----example - initialization of an array/matrix with zeros ----------
 
-% this is ssiblefor square matrices
+% C based code
+for i = 1 : 3
+    for j = 1 : 3
+        A(i,j) = 0;
+    end
+end
+
+% Matlab based code
+A = zeros(1,3);
+A = zeros(3,1);
+A = zeros(3,3)
+
+% this is for square matrices
 A1 = zeros(3)   
 A2 = zeros(3,3)
 
-% para metrizes não quasdradas
+% for non-squared matrices
 A3 = zeros(3,2);
 
-% -------------------------- example -----------------------------------
-%fill automatically the matriz values 
+% ---- example - filing automatically an array/matrix with a given value
 
 A= ones(3,3)
 A = 5* ones(3,4)
@@ -62,7 +74,7 @@ end
 A(1,:) = [1 : 5]
 A(2,:) = [36 : 40]
 
-% ou então
+% alternatives in Matlab based code for the exampe above
 A(1,:) = [1:5]
 A(2,:) = 35 + [1:5]
 
@@ -70,8 +82,8 @@ A(1,:) = [1:5]
 A(2,:) = 35 + A(1,:)
 
 
-% -------------------------- example -----------------------------------
-% acedr a conteudo de array
+% - example -access the contents of an array-------------------------
+
 step = 2;
 A = [1: 10]
 A(1:step:A(end))
@@ -80,7 +92,7 @@ A(1:step:A(end))
 
 
 
-% --------------------------- example ----------------------------
+% --- example - reshaping the size of an array/matrix ---------------
 
 A = [1 2 3 4; 5 6 7 8]
 
@@ -95,10 +107,7 @@ B2 = reshape(A,8,1)
 B3 = reshape(A,4,2)
 
 
-% -------------------------- example ----------------------------------
-
-% procurar valor num array
-A = [ 21 6 2 54 8];
+% --- example - seeking for a value in an array/matrix -------------
 
 %C - based code
 A = [ 21 6 2 54 8];
@@ -123,30 +132,9 @@ for k = 1 : length(A)
     end
 end
 
-% -------------------------- example -----------------------------------
-% reshape
-% A(1:2:length(A))
-% A(:)
-% replica
-% multilicação pnto a ponto
-% find
 
 
-% -------------------------- example -----------------------------------
-for i = 1 : 3
-    for j = 1 : 3
-        A(i,j) = 0;
-    end
-end
-
-A = zeros(1,3);
-A = zeros(3,1);
-A = zeros(3,3)
-
-A = [1 2 3; 4 5 6; 7 8 9] 
-
-
-% -------------------------- example -----------------------------------
+% ---example - flipping a matrix strucure (linewise) ----------
 
 A = [1 1 1 1 1; 2 2 2 2 2; 3 3 3 3 3; 4 4 4 4 4; 5 5 5 5 5]
 
@@ -161,13 +149,12 @@ for i = 1 : L
     end
 end
 
-
-
+% Matlab based code
 
 A = flipud(A);
 
-% -------------------------- example -----------------------------------
-% Thresholding an image 
+% ---- example --  Thresholding an image ----------------
+ 
 
 % ----------- method 1
 A = [ 1  6  2 6   87 
@@ -176,6 +163,7 @@ A = [ 1  6  2 6   87
  
  T = 75;
  
+ %C based code
  [L, C] = size(A);
  
  for i = 1 : L
@@ -187,7 +175,7 @@ A = [ 1  6  2 6   87
  end
  A
  
- % ---------- method 2
+ % Matlab based code
  A = [ 1  6  2 6  87 
      32 45 78 8  76
      34 23 6  3  898 ];
@@ -197,14 +185,15 @@ A = [ 1  6  2 6   87
  
  
  
- % ---------------------- example  ----------------------------------------
-% Extract the diagonal of a matrix
+% -- example  -----Extract the diagonal of a matrix
+
  
  A = [ 1  6  2  6
       32 45 78  8
       34 23  6  3
       2   4 76  1 ];
  
+ % C based code
  [L, C] = size(A);
  
  D = [];
@@ -217,21 +206,22 @@ A = [ 1  6  2 6   87
  end
  D
  
+ % Matlab based code
+ 
  D = diag(A)
  
- % ------------------- exercise -----------------
- %gerar a matriz :
+ % -- exercise generate the folowing structure for ten matrix A
+ 
    A = [1     2     3     4     5
         1     2     3     4     5
         1     2     3     4     5
         1     2     3     4     5
         1     2     3     4     5 ];
      
-    
-    
+        
  repmat([1:5],5,1)
  
- % --------------------------- example ----------------------------
+ % ---- example --- with images
  
  I = imread('D:\CVI\JanPIV\teoricas\demos\matlab\cap2\veiculoGray.jpg');
 
@@ -240,6 +230,9 @@ A = [ 1  6  2 6   87
  figure; imshow(I');
  
  figure; imshow(repmat(I,2,2));
+ 
+ 
+ 
 
              
  
